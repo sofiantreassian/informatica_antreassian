@@ -1,88 +1,102 @@
-# si dice main es que estoy en mi repo
-#en bash pongo git add . // despues pongo git commit -m "y algun comentario aca" // por ultimo pongo git push 
-#asi ya subi lo que quiero a mi repo de github 
-#chequeo en github que se actualizo mi repo
+#Practica de introduccion a python parte 2
 
-#os.mkdir(ruta) me permite crear una carpeta. de ruta (entre comillas) le pongo donde la quiero crear. con os.chdir(ruta) me muevo a la carpeta que quiero crear 
-#os.mkdir("../Escritorio/carpeta")
+#ejercicio 1
+def verificar_control(lista):
+    if "control" in lista:
+        indice = lista.index("control") 
+        lista[indice] = "control revisado" 
 
-#siempre antes de hacer un script pongo #!
-#!/usr/bin/env python3 asi le digo que busque y ejecute en la ruta python 
+#ejercicio 2
+def eliminar_primer_elemento(lista):
+    if len(lista) > 0:
+        lista.pop(0)
+        print("La lista está vacía")
 
-# (../../) PARA moverme a una carpeta de arriba si todavia no estoy ahi. x ejemplo (../../"informes")
+#ejercicio 3 
+def posicion_elemento(lista,elemento):
+    posicion = -1
+    for element in lista:
+        posicion+=1
+        if elemento == element:
+            return 'posición: '+str(posicion)
 
-#ejercicio de practica
+#ejercicio 4
+def eliminar_y_agregar(lista1,lista2,elemento):
+        if elemento in lista1:
+            lista2.append(elemento)
+            del lista1[lista1.index(elemento)] 
 
-#!
+def eliminar_y_agregar2(lista1,lista2,elemento):
+    if elemento in lista1:
+        lista1.remove(elemento)
+        lista2.append(elemento)
 
-import os
-import glob
-import sys
+#ejercicio 5
+def par_impar(lista):
+    for numero in lista:
+        posicion = lista.index(numero)
+        lista[posicion] = (numero%2 == 0)
+    return lista
 
-# Movemos a la carpeta Informes
-os.chdir('Informes')
+def par_impar2(lista):
+    return [(num % 2 == 0) for num in lista]  
 
-# Obtenemos los archivos .txt en la carpeta
-archivos_txt = glob.glob('*.txt')
+#ejercicio 6
+def cant_por_caracter(string):
+    caracteres ={}
+    for caracter in string:
+        if caracter in caracteres:
+            caracteres[caracter] += 1
+        else:
+            caracteres[caracter] =1
+    return caracteres
 
-# Inicializamos un diccionario para almacenar los resultados
-resultados = {}   
+#ejercicio 7 
 
-# Iteramos sobre cada archivo_txt
-for archivo in archivos_txt:
+#ejercicio 8 
+def palabra_palindroma(string):
+    return string.lower() == string.lower()[::-1]
 
-    # Abrimos el archivo
-    with open(archivo, 'r') as archivo:
+#ejercicio 9 
+def productoria(lista):
+    producto = 1
+    for numero in lista:
+        nuevo_prod = producto * numero
+        producto = nuevo_prod
+    return producto
 
-        # Leemos todas las líneas
-        lineas = archivo.readlines()
+#ejercicio 10
+socios = {
+    1: {"nombre": "Florencia", "apellido": "Ocampo", "fecha_ingreso": "14/09/2001", "cuota_al_dia": True},
+    2: {"nombre": "David", "apellido": "Estévez", "fecha_ingreso": "14/09/2001", "cuota_al_dia": True},
+    3: {"nombre": "Sofía", "apellido": "Cáceres", "fecha_ingreso": "14/09/2001", "cuota_al_dia": True},
+    4: {"nombre": "Lionel", "apellido": "Messi", "fecha_ingreso": "21/10/2017", "cuota_al_dia": True}
+}
 
-        # Obtenemos la cantidad de líneas
-        cantidad_lineas = len(lineas)
+# CANTIDAD DE SOCIOS
+def cant_socios(diccionario):
+    return len(diccionario)
+# print(len(socios)) -- SABER CANTIDAD DE SOCIOS --
 
-        # Obtenemos la cantidad de veces que aparece la palabra 'estado'
-    for linea in lineas:
-	    if 'estado' in linea:
-		    cantidad_estado = cantidad_estado + 1	
+# REVISAR PAGO CUOTA
+def revisar_pago(numero_socio):
+    return socios[numero_socio]['cuota_al_dia']
+# print(revisar_pago(3))
 
-        # Guardamos los resultados en el diccionario
-resultados[archivo] = (cantidad_lineas, cantidad_estado, lineas[0])
+# CAMBIO FECHA
+def cambio_fecha(fecha1, fecha2):
+    for socio in socios:
+        if socios[socio]['fecha_ingreso'] == fecha1:
+            socios[socio]['fecha_ingreso'] = fecha2
+# cambio_fecha('21/10/2017','22/10/2017')
+# print(socios)
 
-# Creamos la carpeta Apellidos (si no existe)
-if not os.path.exists('Apellidos'):
-    os.mkdir('Apellidos')
-
-# Creamos el archivo Lista.txt y escribimos la primera línea de cada archivo
-with open('Apellidos/Lista.txt', 'w') as f:
-    for archivo, (cantidad_lineas, cantidad_estado, primera_linea) in resultados.items():
-        f.write(primera_linea)
-        f.write('\n')
-
-
-#Resolucion Guille 
-
-#!/usr/bin/env python3
-
-import os, glob, sys
-
-def ejercicio_rutas():
-     os.chdir("Informes")
-     txt = glob.glob("*.txt")
-     cantidad_estado = []
-     cantidad_lineas = []
-     for archivo in txt:
-          with open(archivo, "r") as file:
-               file_completa = file.read()
-               cantidad_estado.append(file_completa.count("estado"))
-               cantidad_lineas.append(file_completa.count("\n"))
-
-     os.mkdir ("Apellido")
-     with open ("Apellido/Lista.txt" , "w") as salida:
-        for archivo in txt:
-             with open(archivo, "r") as file:
-                  #primer_linea = file.readline()
-                  #salida.write(primer_linea)
-                  salida.write(file.readline())
-     return cantidad_estado, cantidad_lineas
-
-c1, c2 = ejercicio_rutas()
+def dar_de_baja(nombre, apellido):
+    for numero_socio, datos in socios.items(): # Ciclo for recorre dicc -socios- con método .items() retorna una lista de tuplas donde cada tupla contiene la clave y el valor correspondiente al elemento del diccionario.
+        if datos["nombre"] == nombre and datos["apellido"] == apellido:
+            del socios[numero_socio]
+            break
+    else:
+        print("No se encontró al socio") #PARA CERRAR BUCLE FOR POR SI LOS DATOS FUERON MAL INGRESADOS O NO EXISTE EL SOCIO
+# dar_de_baja('Florencia','Ocampo')
+# print(socios)
