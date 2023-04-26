@@ -1,3 +1,5 @@
+#Practica de introduccion a python parte 1 
+
 #ejercicio 1 
 def anterior_y_posterior(numero):
     return numero - 1, numero + 1 

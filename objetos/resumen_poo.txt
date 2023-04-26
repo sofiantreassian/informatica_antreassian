@@ -1,0 +1,44 @@
+Resumen Programacion orientada a objetos
+
+el init es el constructor 
+el self hace referencia a la instacia, es decir al propio objeto
+
+clase = golondrina 
+instancias = pepita, anastasia
+atributos = volar en circulos, comer 
+estado = energia 
+
+diferencia entre metodo y funcion: el metodo esta dentro de una clase y la funcion no. lo mismo con procedimiento 
+diferencia entre funcion y procedimiento: el procedimiento no tiene retorno pero la funcion si 
+
+polimorficos: objetos que entienden mismos mensajes 
+
+herencias:clase hija hereda de la clase madre 
+clase abstracta/ clase madre le da cosas a la clase hija
+
+
+Repo Ana:
+
+pepita es un objeto, y como todo objeto, entiende algunos mensajes.
+
+los objetos pueden tener estado (en el caso de pepita, su estado es la energía), el cual puede cambiar a lo largo del tiempo. El estado es el conjunto de atributos de un objeto.
+
+cada vez que un objeto recibe un mensaje, hace algo, reaccionando al mismo. Por tanto, decimos que los objetos tienen un cierto comportamiento (por ejemplo, cuando pepita come alpiste, su energia sube en tantas unidades como los gramos ingeridos)
+
+llamaremos ambiente al contexto en el que el viven los objetos, tienen su estado y pueden entender mensajes. En un mismo ambiente podemos contar con varios objetos, como por ejemplo, pepita y anastasia. En otras palabras es el mundo que los objetos habitan y en que se relacionan. Cada vez que apretamos play en replit, o le damos reset en colab, o cerramos nuestro intérprete de python en nuestra computadora y lo volvemos a iniciar, estamos destruyendo ese mundo y volviendo a empezar.
+
+no todos los objetos tienen qué entender los mismos mensajes. Al conjunto de mensajes que cada objeto expone lo llamaremos interfaz, la cual puede ser (y típicamente será) diferente para cada objeto.
+
+En el paradigma de objetos, los mismos se crean a partir de moldes llamados clases, que sirven para dar vida a objetos que se comporten de igual forma. 
+
+al acto de crear un objeto a partir de una clase se lo denomina instanciación, y por tanto a los objetos también se los denomina instancias (de una clase particular). Por ejemplo, pepita es una instancia (de la clase Golondrina).
+Si bien el término instancia quizás no nos diga mucho, en este contexto significa "ejemplo", dado que cada golondrina como pepita o anastasia son ejemplo concretos (es decir, casos particulares) de la idea más general de una Golondrina.
+
+los métodos se definen usando la misma palabra clave def que usabamos para funciones y procedimientos. Sin embargo, no son lo mismo: como podemos ver los métodos siempre están "dentro" de una clase, y además tienen como primer parámetro self. El self representa la instancia de la clase. Al usar la palabra clave "self" podemos acceder a los atributos y métodos de la clase en Python.
+
+los métodos y las funciones, si bien se ven parecidos, no son lo mismo.
+1. Las funciones se invocan como funcion(argumentos), pero los métodos se evaluan a través el envio de mensajes como objeto.mensaje(argumentos)
+2. los métodos tienen siempre declaran como primer parámetro self, las funciones no
+3. los métodos siempre van dentro de un class, mientras que las funciones van por fuera
+
+La herencia es un proceso mediante el cual se puede crear una clase hija que hereda de una clase madre sus métodos y atributos.
