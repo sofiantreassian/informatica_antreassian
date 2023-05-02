@@ -1,0 +1,138 @@
+Programacion con objetos 
+
+
+Leccion 1: Objetos y mensajes
+
+- nos comunicamos con los objetos a través de sus referencias
+- siempre estamos enviando el mensaje al objeto a través de una referencia y mediante la sintaxis objeto.mensaje()
+
+- funciones:
+str.startswith
+str.endswith
+str.strip
+str.lower
+list.remove
+str.upper
+list.append
+
+- funciones retornan un valor mientras que los procedimientos tienen un efecto, es decir, modifican algo.
+
+- Al conjunto de mensajes que podemos enviarle a un objeto lo denominamos interfaz. 
+
+- hay objetos que comparten parte de su interfaz. entienden mismos mensajes 
+
+
+
+
+
+
+
+2. Clases 
+cómo crear nuestros propios objetos y qué sucede realmente cuando les enviamos mensajes, ¿qué determina que pueda entenderlo o no?
+
+- Los objetos tienen atributos y al conjunto de los mismos se los denomina estado. Los atributos también son objetos y nos permiten guardar valores y representar características del objeto que los posea.
+- Para conocer el estado de un objeto, podemos acceder a cada uno de sus atributos escribiendo objeto.atributo, a diferencia de cuando envíamos un mensaje, al acceder a un atributo no vamos a usar paréntesis.
+- los objetos tienen: una interfaz, es decir, el conjunto de mensajes que entiende y un estado, es decir, los atributos que posee.
+
+- Celular es un molde que nos permite crear objetos. Estos moldes se denominan clases y cada objeto que creamos a partir de ellas es una instancia. 
+
+- __init__ viene de la palabra en inglés initialize que en castellano es inicializar. Es lo que se conoce como el constructor de una clase y nos permite darle valores iniciales a los atributos de sus instancias a la hora de crearlas. 
+- self (en castellano sería algo así como yo) es un primer parámetro obligatorio que nos permite acceder a los atributos del objeto que estamos instanciando. Si bien ese parámetro no debe llamarse selfobligatoriamente, es la convención que se utiliza para nombrarlo 
+
+- para que un objeto entienda un mensaje debemos "enseñarle" cómo hacerlo, y para ello es necesario definir un método dentro de la clase a la que pertenece. Un método es, entonces, la descripción de qué hacer cuando se recibe un mensaje del mismo nombre. El conjunto de estos métodos provee de comportamiento a las instancias de una clase.
+
+- los atributos nos permiten almacenar valores y representar características de nuestros objetos
+
+- se define una clase con su constructor y sus metodos 
+
+- Lo interesante a la hora de programar con objetos es que cuando les enviamos mensajes, cada objeto le pregunta qué hacer a su clase. Este concepto es conocido como method lookup, que en castellano sería algo así como "búsqueda del método" 
+
+
+
+
+
+3. Polimorfismo y encapsulamiento
+
+- hay clases que no necesitan constructor (init), porque no es necesario inicializar atributos
+
+- se pueden enviar mensajes de un objeto a otro
+
+- para que un objeto entienda un mensaje hay que definir el metodo dentro de su clase 
+
+- la capacidad de un objeto de poder enviarle el mismo mensaje indistintamente a objetos de distintas clases se llama polimorfismo y es uno de los ejes principales de la programación con objetos. 
+
+- Los objetos polimórficos deben pertenecer a clases que entiendan un mismo mensaje más allá de cómo esté definido el método, es decir, dos o más objetos son polimórficos cuando sus clases comparten una interfaz.
+
+- para que estemos ante un caso de polimorfismo es necesaria la presencia de al menos tres objetos: uno que envíe el mensaje y dos de clases distintas que puedan entenderlo.
+
+- la práctica de minimizar el acceso a los atributos de otros objetos se llama encapsulamiento 
+
+- las excepciones son parte del lenguaje y son indicaciones de que algo salió mal. Lo interesante es que podemos lanzar nuestras propias excepciones utilizando raise de la siguiente forma... raise Exception
+
+- Para que dos métodos sean polimórficos no alcanza con que tengan el mismo nombre, también necesitamos que tengan los mismos parámetros.
+
+
+
+
+
+4. Herencia 
+
+- Una forma de organizar las clases cuando programamos en objetos es establecer una jerarquía.
+- Cuando escribimos entre paréntesis el nombre de la súper clase significa "hereda de"
+- La herencia nos permite que las subclases posean los mismos métodos y atributos que la superclase 
+
+- cuando dos o más objetos repiten lógica, creamos una clase con el comportamiento en común. Análogamente, en el caso que dos o más clases repitan lógica, debemos crear una nueva clase a la que llamaremos superclase. Esta llevará los métodos repetidos de las clases originales (subclases) y haremos que estas últimas hereden de ella. De esta forma, las subclases que heredan de la superclase sólo tendrán definido su comportamiento particular.
+
+- las clases abstractas, a diferencia de las clases concretas, nunca las instanciamos. En otras palabras, no creamos objetos con esa clase, solo nos sirven para proveer comportamiento a sus subclases.
+
+- method lookup: el proceso por el cual cuando le enviamos un mensaje a un objeto, este busca en su clase la definición del método asociado. 
+- Al tratar con herencia, cambian un poquito las cosas. Si bien el objeto va a seguir preguntándole a su clase qué debe hacer al recibir el mensaje, en caso de no encontrar un método asociado no va a lanzar una excepción sino que se va a fijar en su superclase. En caso de no encontrar la definición seguirá "subiendo" en la jerarquía de clases y solo fallará nuestro código si el método no fue encontrado en ninguna de ellas. 
+
+- ventajas de la herencia: evitar la repetición de lógica.
+
+- Al utilizar super en el método de una subclase, se evalúa el método con el mismo nombre de su superclase y además lo que se está redefiniendo
+- super en cierta forma modifica como se comporta el method lookup.
+
+- ¡Ya tenemos una nueva herramienta para evitar repetir lógica! 
+Recordá que la herencia es un concepto amplio que tiene muchas variantes: primero conocimos las clases abstractas, que no se instancian. También aprendimos a redefinir los métodos cuando heredamos un método pero queremos que se comporte de otra forma.
+Luego probamos un caso de herencia de una clase concreta, y cómo las subclases heredan los métodos de su superclase. Por último aprendimos a usar super: cuando una subclase lo envía, se evalúa el método del mismo nombre de su superclase.
+
+
+
+
+
+5. Colecciones 
+
+- las listas también son objetos y que entienden sus propios mensajes
+- las listas entienden el mensaje append que recibe el objeto a agregar como argumento. 
+
+- Las listas por comprensión son una herramienta que nos permite hacer mapeos y/o filtrados sobre una lista.
+
+- una lista se puede mapear o filtrar
+mapear for in filtrar for in if 
+
+- para acceder a los campos de un diccionario utilizamos corchetes ([]) y comillas.
+
+- para fijarnos si un elemento forma parte de una lista contamos con in y podemos negarlo con not in
+
+- Hasta acá usamos dos tipos de colecciones, las listas y los diccionarios. Ahora vamos a conocer los sets (en castellano conjuntos).
+- Los sets son muy parecidos a las listas, pero tienen dos particularidades que los diferencian: no tienen elementos repetidos y sus elementos no están ordenados.
+-  los sets a diferencia de las listas, no admiten repetidos. 
+
+- Cuando programamos, muchas veces nos encontramos con que debemos cambiar algo que ya funcionaba en pos de mejorar como está estructurada la solución. A este proceso se lo conoce como refactorización 
+
+- set() es un set vacío
+- los sets no entienden el mensaje append
+- los sets se pueden trabajar utilizando comprensión de la misma forma que las listas
+
+- Ya conocimos tres tipos de colecciones: las listas, los diccionarios y los sets. Solo nos queda uno por descubrir, las tuplas. Las tuplas son similares a las listas pero tienen una particularidad, son inmutables. En criollo, las tuplas no se pueden modificar por lo que:
+no podemos agregarles ni quitarles elementos;
+no podemos modificar el valor de sus elementos.
+Es por este motivo que las tuplas se utilizan en aquellos casos donde quisiéramos usar una lista pero ya sabemos de antemano cuántos y qué elementos va a tener.
+
+- Las tuplas se pueden representar de tres formas:
+ tupla_1 = ("Violeta", "Amarillo")
+ tupla_2 = "Naranja", "Azul"
+ tupla_3 = tuple((22, 22, True))
+
+- El uso más común de las tuplas es cuando queremos retornar más de una cosa y sabemos exactamente cuántas. Recordemos que las funciones o los métodos con retorno solo pueden retornar un valor, pero ¿y si ese valor es una tupla?

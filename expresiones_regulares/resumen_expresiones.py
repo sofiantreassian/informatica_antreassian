@@ -1,5 +1,7 @@
 #Resumen expresiones regulares
 
+#siempre importar re 
+
 # 1. Lo esencial es invisible a los ojos
 #hay caracteres especiales, representados por secuencias de escape
 #Las secuencias de escape son una combinación de caracteres que tiene un significado distinto de los caracteres literales contenidos en ella y se utilizan para definir ciertos caracteres especiales dentro de cadenas de texto, tipicamente aquellos que dan formato al mismo. Y aún cuando son un conjunto de caracteres, una secuencia de escape se considerada un carácter único.
