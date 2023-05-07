@@ -53,3 +53,5 @@
 # .readline() Lee como máximo el número de caracteres de tamaño de la línea. Esto continúa hasta el final de la línea y luego regresa.
 
 # .readlines() Esto lee las líneas restantes del objeto de archivo y las devuelve como una lista.
+
+#Resumen Mora 

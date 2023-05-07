@@ -33,7 +33,7 @@ class Notebook:
         self.precio = 0
 
     def descuento_al_precio(self, porcentaje):
-        return precio -= porcentaje 
+        return self.precio -= porcentaje 
 
 class Descuentos (Notebook):
 
@@ -41,7 +41,7 @@ class Descuentos (Notebook):
 #Ejercicio 4: Definí una clase que modele un contador, el cual puede incrementar o disminuir en uno el valor que se ingresa, recordando el valor actual. También puede resetear este valor y al hacerlo se pone en cero. Además es posible indicar directamente un número nuevo que reemplace al valor actual. Este objeto debe entender los siguientes mensajes:
 # inc() dis() reset() valorActual() valorNuevo(nuevoValor)
 
-class Modelo: 
+ class Modelo: 
     def __init__(self):
         self.contador = 0 
 
@@ -63,7 +63,7 @@ class Perro:
         self.alimento += gramos
 
     def alimento(self):
-	print(self.alimento)
+       print(self.alimento)
 
     def acariciar(self):
         self.caricias += 1
@@ -72,7 +72,7 @@ class Perro:
         return self._caricias < 2
 
     def pasear(self, km):
-	self.alimento -= km / 4
+       self.alimento -= km / 4
 
 class Gato:
     def __init__(self):
@@ -86,7 +86,7 @@ class Gato:
         self.alimento += gramos * 1.5
 
     def caricias(self):
-	print(self.caricias)
+       print(self.caricias)
 
     def acariciar(self):
         self.caricias += 1
@@ -132,3 +132,218 @@ class Auto (MedioDeTransporte):
     return 5 
   def recorrer(self,kilometros):
     self.combustible -= kilometros / 2
+
+
+#Practica modelos 
+
+#1 
+
+#En un mundo distópico la humanidad es atacada sin descanso por titanes. Estos titanes son muy resistentes pero no inmortales, su salud (100 de máxima) puede ir disminuyendo si reciben daño debido a algún ataque, y si llega a 0 se muere. Al recibir este ataque la salud disminuye 1.5 por cada puntos de daño recibido. Además tienen la capacidad de destruir cierto número de casas dependiendo de su salud, siendo 8 casas cuando su salud es máxima o un número proporcional si su salud es menor a la máxima (si tiene 60 puntos de salud destruiría 4.8 casas, es decir, 4 casas completas y más de la mitad de otra). Sin embargo no tienen la capacidad de comunicarse con los humanos, siendo un grito, "¡Aaaarrrg!", el único sonido que hacen. Definí la clase Titan con los atributos y métodos correspondientes. Además instanciá a un Titan y ejecutá las siguientes líneas:
+
+#DATOS:
+    #salud = 100 de máxima
+    #si llega a 0 = muere
+    #al recibir este ataque la salud disminuye 1.5 por cada punto de daño recibido
+    #pueden destruir casas: 
+        # 8 casas cuando su salud es máxima
+        # salud < maxima, destruye 4.8 casas
+
+
+class Titan:
+    def _init_(self, salud_actual):
+        self.salud = salud_actual
+        salud_actual = 100
+        self.max_salud = 100
+    
+    def esta_vivo(self):
+        return self.salud > 0
+    
+    def recibir_ataque(self, cantidad_ataques):
+        self.salud -= cantidad_ataques * 1.5
+    
+    def salud_actual(self):
+        return self.salud
+    
+    def grito(self):
+        return "arghhh"
+    
+    def cuantas_casas(self):
+        return self.salud * 8 /self.max_salud
+    
+    def destruir(self):
+        if (self.cuantas_casas() > 1):
+            if ((self.cuantas_casas() % 1) > 0):
+                self.salud -= (self.cuantas_casas() // 1) * 12.5
+            else:
+                self.salud -= (self.cuantas_casas() - 1) * 12.5
+        else:
+            print("No puede destruir ninguna casa")
+
+
+titan1 = Titan(100)
+titan1.recibir_ataque(30)
+print(titan1.esta_vivo())
+print(titan1.salud_actual())
+print(titan1.destruir())
+print(titan1.grito())
+titan1.destruir()
+titan1.salud_actual()
+titan1.recibir_ataque(4)
+print(titan1.esta_vivo())
+
+
+#2
+#Nave espacial Enterprise 
+#nivel de potencia 0 a 100
+#nivel de coraza 0 a 20
+#Nave puede:
+    # encontrarse con una pila atómica = potencia aumenta en 25.
+    #encontrarse con un escudo = nivel de coraza aumenta en 10.
+    #recibir un ataque --> se especifican los puntos de fuerza del ataque recibido. 
+    #La Enterprise "detiene" el ataque con la coraza
+        #si la coraza no alcanza, el resto se descuenta de la potencia. 
+# Enterprise nace con 50 de potencia y 5 de coraza
+
+class Enterprise:
+    def _init_(self):
+        self.nivel_potencia=50
+        self.nivel_coraza=5
+        self.max_potencia=100
+        self.min=0
+        self.max_coraza=20
+    
+    def potencia(self):
+        return self.nivel_potencia> self.min and self.nivel_potencia < self.max_potencia
+
+    def coraza(self):
+        return self.nivel_coraza > self.min and self.nivel_coraza < self.max_coraza
+    
+    def encontrarPilaAtomica(self):
+        if self.nivel_potencia+25<=100:
+            self.nivel_potencia+=25
+        else:
+            self.nivel_potencia=100
+    
+    def encontrarEscudo(self):
+        if self.nivel_coraza+10<=self.max_coraza:
+            self.nivel_coraza+=10
+        else:
+            self.nivel_coraza=self.max_coraza
+
+    def recibirAtaque(self, puntos):
+        if puntos <= self.nivel_coraza:
+            self.nivel_coraza-=puntos
+        else: self.nivel_potencia -= puntos - self.nivel_coraza
+        self.nivel_coraza = self.min
+    
+    def fortalezaDefensiva(self):
+        self.nivel_coraza + self.nivel_potencia
+    
+    def necesitaFortalecerse(self):
+        return self.nivel_coraza==0 and self.nivel_potencia <=20
+    
+    def fortalezaOfensiva(self):
+        if self.nivel_potencia < 20:
+            return 0
+        else:
+            return (self.nivel_potencia - 20)/2
+
+
+enterprise = Enterprise()
+enterprise.encontrarPilaAtomica()
+enterprise.recibirAtaque(14)
+enterprise.encontrarEscudo()
+print(enterprise.nivel_potencia)
+print(enterprise.nivel_coraza)
+
+
+#3
+
+
+class Persona:
+    def _init_(self, la_energia):
+        self.energia = la_energia
+        self.feliz = False
+
+    def energia_actual(self):
+        return self.energia
+    
+    def dormir (self, horas):
+        if self.energia + horas <= 100:
+            self.energia += horas * 12.5
+        else:
+            self.energia = 100
+    
+    def comer(self):
+        if self.energia + 10 <=100:
+            self.energia += 10
+        else:
+            self.energia = 100
+    
+    def hacer_ejercicio(self, minutos):
+        if (self.energia - minutos * (25/30)) >= 0:
+            self.energia -=minutos * (25/30)
+        else:
+            self.energia=0
+    
+
+class Estudiante(Persona):
+    def estudiar(self, horas):
+        if (self.energia - 20 * horas) >= 0:
+            self.energia -= 20 * horas
+        else:
+            self.energia=0
+    
+    def aprobar(self):
+        return not self.feliz 
+
+estudiante = Estudiante(100)
+estudiante.hacer_ejercicio(30)
+estudiante.estudiar(3)
+estudiante.comer()
+print(estudiante.aprobar())
+print(estudiante.energia_actual())
+
+class Persona:
+    def _init_(self, la_energia):
+        self.energia = la_energia
+        self.feliz = False
+
+    def energia_actual(self):
+        return self.energia
+    
+    def dormir (self, horas):
+        if self.energia + horas <= 100:
+            self.energia += horas * 12.5
+        else:
+            self.energia = 100
+    
+    def comer(self):
+        if self.energia + 10 <=100:
+            self.energia += 10
+        else:
+            self.energia = 100
+    
+    def hacer_ejercicio(self, minutos):
+        if (self.energia - minutos * (25/30)) >= 0:
+            self.energia -=minutos * (25/30)
+        else:
+            self.energia=0
+    
+
+class Estudiante(Persona):
+    def estudiar(self, horas):
+        if (self.energia - 20 * horas) >= 0:
+            self.energia -= 20 * horas
+        else:
+            self.energia=0
+    
+    def aprobar(self):
+        return not self.feliz 
+
+estudiante = Estudiante(100)
+estudiante.hacer_ejercicio(30)
+estudiante.estudiar(3)
+estudiante.comer()
+print(estudiante.aprobar())
+print(estudiante.energia_actual())
