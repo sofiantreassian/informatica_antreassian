@@ -1,3 +1,6 @@
+#control f para buscar una palabra 
+# mi direccion es:     /c/Users/martin/OneDrive/Escritorio/Fundamentos de informatica/informatica_antreassian 
+
 # si dice main es que estoy en mi repo
 #en bash pongo git add . // despues pongo git commit -m "y algun comentario aca" // por ultimo pongo git push 
 #asi ya subi lo que quiero a mi repo de github 
