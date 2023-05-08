@@ -54,4 +54,61 @@
 
 # .readlines() Esto lee las líneas restantes del objeto de archivo y las devuelve como una lista.
 
+
+
+
+
+
+
 #Resumen Mora 
+
+'''
+> Paso 1: pienso lo que quiero hacer en palaras, y lo escribo.
+
+> Paso 2: importo lo que necesite:
+	> <os> → si quiero mover/ejecutar cosas
+		> permite:
+			> <pwd> → Obtener directorio actual → getcwd()
+			> <chdir(path)> → cambiar el directorio.
+			> <mkdir(path[,modo])> → crear un directorio.
+
+ 	> <sys> → biblioteca que toma parámetros entre terminales
+
+> Paso 3: abro el archivo.
+	> with open(nombre del archivo, "modo") as miarchivo
+		> Modos: <r>(read), <w>(write), <r+>(las dos), <a>(append)
+		> miarchivo (o la palabra que elija) es para refererise al archivo que abro.
+		> como uso with, no tengo que usar close, es como un cierre automatico.
+	> ej: 
+		>def es_un_ejemplo(archivo)
+		with open(archivo, "modo") as miarchivo
+			#en ese caso, el archivo que decido abrir es un parametro. Si lo pusiera entre comillas, le asginaria un archivo especifico con .txt
+
+> Paso 4: definir que metodo voy a usar, en base a que quiero hacer.
+	> <readlines()> lee las lineas del archivo y las devuelve como listas.
+	> <readline()>  lee la primer linea del archivo.
+		> al agregarle un numero, lee esa cantidad de caracteres, de la primera linea.
+	> <read()> lee el contenido del archivo y lo devuelve como cadena de texto.
+		>acepta un parámetro extra, ahi se puede especificar el nro de caracteres a leer.
+		>Ej:
+		with open("lista_compras.txt", r) as miarch
+		print(archivo.read(5))
+		#eso va a leer los primeros 5 caracteres del archivo.
+
+> Algunas Funciones:
+> > ><replace>("lo que quier reemplazar", "el reemplazo")
+		>ej:
+		with open ("ejemplo.txt", "r")
+		lineas = archivo.readlines()
+		for l in lineas:
+			return (l.replace("\n", "|"))
+
+> > > <split>("lo que quier separar")
+	> ej:
+	with open ("ejemplo.txt", "r")
+	contenido= archivo.read()
+	lineas = contenido.split("\n")
+	print(lineas)
+		#devuelve una cadena con el contenido, sin los enters
+
+'''
