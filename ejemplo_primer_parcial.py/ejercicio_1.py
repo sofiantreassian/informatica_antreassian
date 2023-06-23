@@ -7,7 +7,7 @@
 import re
 
 def delimitados_piquitos_sin_o(string):
-    print(re.findall("<([^o].*?)>", string))
+    print(re.findall("<([^o]*?)>", string)) 
 
 delimitados_piquitos_sin_o("ds<hola>hsb<hhj>sdk<469>nkd")
 

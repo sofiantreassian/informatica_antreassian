@@ -35,7 +35,7 @@
 #Ejemplos:
 # *: Cero o más: todas las ocurrencias de un dado substring
 # +: Una o más ocurrencias del patrón
-# ?: Cero o una
+# ?: Cero o una (si esta combinado con un metacaracter significa favorecer matches internos)
 # {n}: Exactamente n veces
 # {n,m}: Por lo menos n pero no más de m veces. mínimo número de ocurrencias en n y el máximo en m.
 

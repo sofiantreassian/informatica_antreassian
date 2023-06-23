@@ -1,0 +1,27 @@
+.about{
+    color: black;
+    background-color: violet;
+    padding: 20px;
+    margin-left: -12px;
+}
+
+.about h1{
+    margin-left: 80px;
+}
+
+.about img{
+    width: 50px;
+    top: 8px;
+    
+}
+
+.medio img{
+    width: 290px;
+    margin-left: 500px;
+
+}
+
+.medio{
+    background-color: yellow;
+    margin-left: -12px;
+}

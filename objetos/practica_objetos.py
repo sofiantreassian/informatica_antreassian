@@ -32,8 +32,8 @@ class Notebook:
         self.modelo = 0
         self.precio = 0
 
-    def descuento_al_precio(self, porcentaje):
-        return self.precio -= porcentaje 
+    #def descuento_al_precio(self, porcentaje):
+        #return self.precio -= porcentaje 
 
 class Descuentos (Notebook):
 
@@ -210,7 +210,7 @@ class Enterprise:
         self.nivel_coraza=5
         self.max_potencia=100
         self.min=0
-        self.max_coraza=20
+        self.max_coraza= 20
     
     def potencia(self):
         return self.nivel_potencia> self.min and self.nivel_potencia < self.max_potencia
